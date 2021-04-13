@@ -14,9 +14,9 @@ class Categories extends Model
     
     public function tasks()
     {
-        return $this->hasMany(Tasks::class);
+        return $this->hasMany(Tasks::class, 'category');
     }
-
+    
     public function latestTask() {
         return $this->hasOne(Tasks::class)->latest();
     }

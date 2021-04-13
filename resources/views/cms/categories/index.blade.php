@@ -21,6 +21,7 @@
                 <tr>
                     <th style="width: 10px">ID</th>
                     <th>Название</th>
+                    <th>Родительская категория</th>
                     <th>Сортировка</th>
                     <th style="width: 230px"></th>
                 </tr>
@@ -30,6 +31,7 @@
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
+                    <td>{{ $category->parent_id}}</td>
                     <td>{{ $category->sort }}</td>
                     <td class="text-right">
                         <form method="post" action="{!! route('categories.destroy', [$category->id]) !!}">

@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Cms\CategoriesController as CmsCategoriesController;
 use App\Http\Controllers\Cms\TasksController as CmsTasksController;
 use App\Http\Controllers\Cms\UsersController as CmsUsersController;
-
-
+use App\Http\Controllers\Cms\DashbordController as CmsDashbordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +31,7 @@ Route::get('/about', [StaticPagesController::class, 'about'])->name('about');
 Route::get('/tasks', [TasksController::class, 'index'])->name('tasks_list');
 Route::get('/users', [UsersController::class, 'index']);
 
+Route::get('/admin', [CmsDashbordController::class, 'index'])->name('dashbord');
 Route::resource('/admin/categories', CmsCategoriesController::class);
 Route::resource('/admin/tasks', CmsTasksController::class);
 Route::resource('/admin/users', CmsUsersController::class);

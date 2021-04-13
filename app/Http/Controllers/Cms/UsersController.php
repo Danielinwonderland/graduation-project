@@ -27,7 +27,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('cms.users.create');
     }
 
     /**
@@ -38,7 +38,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create($request->all());
+        return redirect()->route('users.index');
     }
 
     /**
@@ -49,7 +50,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('cms.user.show')
+            ->with('user', $user);
     }
 
     /**

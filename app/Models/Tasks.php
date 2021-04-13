@@ -11,9 +11,9 @@ class Tasks extends Model
     use HasFactory;
 
 
-    public function category()
+    public function categoryM()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Categories::class, 'category');
     }
 
 }

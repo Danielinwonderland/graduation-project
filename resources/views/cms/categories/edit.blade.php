@@ -27,8 +27,8 @@
                 </div>
 
                 <div class="form-group">
-                {{ Form::label('pid', 'Parent Category') }}
-                {{-- {!! Form::select('pid', $categories, old('pid') ?? null, ['class' => 'form-control']) !!} --}}
+                {{ Form::label('parent_id', 'Parent Category') }}
+                {!! Form::select('parent_id', $categories, old('parent_id') ?? null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">

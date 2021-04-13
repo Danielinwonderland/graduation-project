@@ -28,7 +28,7 @@
 
                 <div class="form-group">
                 {{ Form::label('parent_id', 'Родительская категория') }}
-                {{-- {!! Form::select('parent_id', $categories, old('parent_id') ?? null, ['class' => 'form-control']) !!} --}}
+                {!! Form::select('parent_id', $categories, old('parent_id') ?? null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">

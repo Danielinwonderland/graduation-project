@@ -25,61 +25,48 @@
     @endif
 
     <div class="card">
-        <!-- form start -->
-        {!! Form::open(['method' => 'POST', 'route' => 'tasks.store', 'files' => true]) !!}
-            <div class="card-body">
-                <div class="form-group">
-                    {!! Form::label('head', 'Заголовок') !!}
-                    {!! Form::text('head', old('head'), ['class' => 'form-control']) !!}
-                    @if($errors->has('head'))
-                        <span class="text-danger">{{ $errors->first('head') }}</span>
-                    @endif
-                </div>
+        @if(isset($user))
+        {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
+    @else
+        {!! Form::open(['method' => 'POST', 'route' => 'users.store']) !!}
+    @endif
+        <div class="card-body">
 
-                <div class="form-group">
-                    {!! Form::label('descn', 'Описание') !!}
-                    {!! Form::textarea('descn', old('descn'), ['class' => 'form-control']) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('customer', 'Заказчик') !!}
-                    {!! Form::text('customer', old('customer'), array('class' => 'form-control')) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('executor', 'Исполнитель') !!}
-                    {!! Form::text('executor', old('executor'), array('class' => 'form-control')) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('price', 'Цена') !!}
-                    {!! Form::text('price', old('price'), array('class' => 'form-control')) !!}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('category', 'Категория') }}
-                    {!! Form::select('category', $categories, old('category'), ['class' => 'form-control']) !!}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('image_input', 'Изображение') }}
-                    <div class="custom-file">
-                        {!! Form::file('image_input', ['class' => 'custom-file-input', 'accept' => 'image/jpeg, image/png']) !!}
-                        {{ Form::label('image_input', 'Выбрать файл', ['class' => 'custom-file-label']) }}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('status', 'Статус') }}
-                    {!! Form::select('status', array('new' => 'Новая', 'progress' => 'В работе', 'done' => 'Выполненая'), old('status'), ['class' => 'form-control']) !!}
-                </div>
+            <div class="form-group">
+                {!! Form::label('firstname', 'Имя') !!}
+                {!! Form::text('firstname', old('firstname'), ['class' => 'form-control']) !!}
+                @if($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('firstname') }}</span>
+                @endif
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                <a href="{{ route('tasks.index') }}" class="btn btn-default">Отмена</a>
-                {!! Form::submit('Сохранить', ['class' => 'btn btn-primary float-right']) !!}
+            <div class="form-group">
+                {!! Form::label('lastname', 'Фамилия') !!}
+                {!! Form::text('lastname', old('lastname'), ['class' => 'form-control']) !!}
+                @if($errors->has('lastname'))
+                    <span class="text-danger">{{ $errors->first('lastname') }}</span>
+                @endif
             </div>
-            <!-- /.card-footer -->
-        {!! Form::close() !!}
+            <div class="form-group">
+                {!! Form::label('email', 'Электронная почта') !!}
+                {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
+                @if($errors->has('email'))
+                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {!! Form::label('password', 'Пароль') !!}
+                {!! Form::password('password', ['class' => 'form-control']) !!}
+                @if($errors->has('password'))
+                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                @endif
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <a href="{{ route('users.index') }}" class="btn btn-default">Отмена</a>
+            {!! Form::submit('Сохранить', ['class' => 'btn btn-primary float-right']) !!}
+        </div>
+        <!-- /.card-footer -->
+    {!! Form::close() !!}
     </div>
 @endsection

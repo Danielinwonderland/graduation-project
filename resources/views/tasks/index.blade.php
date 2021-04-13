@@ -7,8 +7,10 @@
         <h2>{{ $task->head }}</h2>
         <div class="body">{{ $task->descn }}</div>
         @if(!empty($task->category))
-        <p>Category: {{ $task->category }}</p>
-        {{-- <p>Parent Category: {{ $article->category->parent()->first()->name ?? '' }}</p> --}}
+        <p>Раздел {{ $task->categoryM->name }}</p>
+            @if(!empty($task->categoryM->parent()->first()))
+            <p>Категория: {{ $task->categoryM->parent()->first()->name ?? '' }}</p>
+            @endif
         @endif
 
     </article>

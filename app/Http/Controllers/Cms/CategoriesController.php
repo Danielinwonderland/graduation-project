@@ -29,7 +29,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $categories=Categories::all();
+        $categories=Categories::all()->pluck('name', 'id');
+        $categories->prepend('--верхний уровень--', null);
         return view('cms.categories.create')
             ->with('categories', $categories);
     }
@@ -77,10 +78,13 @@ class CategoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {          
+        $categories=Categories::where('id', '!=', $id)->pluck('name', 'id');
+        $categories->prepend('--верхний уровень--', null);
         $category = Categories::find($id);
         return view('cms.categories.edit')
-            ->with('category', $category);
+            ->with('category', $category)
+            ->with('categories', $categories);
     }
 
     /**

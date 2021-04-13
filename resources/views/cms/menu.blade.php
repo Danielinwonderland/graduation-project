@@ -5,7 +5,7 @@
              with font-awesome or any other icon font library -->
         <li class="nav-item">
             <a href="{{ route('tasks.index') }}" class="nav-link">
-                <i class="nav-icon far fa-newspaper"></i>
+                <i class="nav-icon fas fa-clipboard-list"></i>
                 <p>Задания</p>
             </a>
         </li>

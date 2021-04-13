@@ -92,6 +92,7 @@ class TasksController extends Controller
     {
         $task = Tasks::find($id);
         $categories = Categories::pluck('name', 'id');
+        $categories->prepend('Выберете категорию', null);
 
         return view('cms.tasks.edit')
             ->with('task', $task)

@@ -56,6 +56,24 @@
                     <span class="text-danger">{{ $errors->first('password') }}</span>
                 @endif
             </div>
+
+            <div class="form-group">
+                {!! Form::label('executor', 'Исполнитель') !!}
+                @if(!empty($user->executor))
+                    {!! Form::checkbox('executor', true, old('executor')); !!}
+                @else
+                    {!! Form::checkbox('executor', old('executor')); !!}
+                @endif
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('customer', 'Заказчик') !!}
+                @if(!empty($user->customer))
+                    {!! Form::checkbox('customer', true, old('customer')); !!}
+                @else
+                    {!! Form::checkbox('customer', old('customer')); !!}
+                @endif
+            </div>
         </div>
             <!-- /.card-body -->
             <div class="card-footer">

@@ -58,7 +58,7 @@
                     <td>{{ $task->price }}</td>
                     <td>{{ $task->customer }}</td>
                     <td>{{ $task->executor }}</td>
-                    <td>{{ $task->category }}</td>
+                    <td>{{ $task->category}}</td>
                     <td>{{ $task->status }}</td>
                     <td class="text-right">
                         <form method="post" action="{!! route('tasks.destroy', [$task->id]) !!}">
